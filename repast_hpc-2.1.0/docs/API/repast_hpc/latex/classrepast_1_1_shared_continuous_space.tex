@@ -1,0 +1,57 @@
+\hypertarget{classrepast_1_1_shared_continuous_space}{\section{repast\-:\-:Shared\-Continuous\-Space$<$ T, G\-P\-Transformer, Adder $>$ Class Template Reference}
+\label{classrepast_1_1_shared_continuous_space}\index{repast\-::\-Shared\-Continuous\-Space$<$ T, G\-P\-Transformer, Adder $>$@{repast\-::\-Shared\-Continuous\-Space$<$ T, G\-P\-Transformer, Adder $>$}}
+}
+
+
+Continuous space \hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} implementation.  
+
+
+
+
+{\ttfamily \#include $<$Shared\-Continuous\-Space.\-h$>$}
+
+Inheritance diagram for repast\-:\-:Shared\-Continuous\-Space$<$ T, G\-P\-Transformer, Adder $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{classrepast_1_1_shared_continuous_space}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrepast_1_1_shared_continuous_space_afb64fc54f0037e441e28234f350bd160}{{\bfseries Shared\-Continuous\-Space} (std\-::string \hyperlink{classrepast_1_1_projection_ab60a0ab4f584685780307d7431b61800}{name}, \hyperlink{classrepast_1_1_grid_dimensions}{Grid\-Dimensions} grid\-Dims, std\-::vector$<$ int $>$ process\-Dims, int buffer, boost\-::mpi\-::communicator $\ast$communicator)}\label{classrepast_1_1_shared_continuous_space_afb64fc54f0037e441e28234f350bd160}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrepast_1_1_shared_continuous_space_afcec67affcb216e1d1e0d558acfc3557}{virtual void {\bfseries synch\-Move\-To} (const \hyperlink{classrepast_1_1_agent_id}{Agent\-Id} \&id, const \hyperlink{classrepast_1_1_point}{Point}$<$ double $>$ \&pt)}\label{classrepast_1_1_shared_continuous_space_afcec67affcb216e1d1e0d558acfc3557}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename G\-P\-Transformer, typename Adder$>$class repast\-::\-Shared\-Continuous\-Space$<$ T, G\-P\-Transformer, Adder $>$}
+
+Continuous space \hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} implementation. 
+
+This primarily adds the buffer synchronization appropriate for this type. Default templated typical Shared\-Continuous\-Spaces are defined in Shared\-Grids.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} for more details.
+\end{DoxySeeAlso}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of objects contained by this \hyperlink{classrepast_1_1_base_grid}{Base\-Grid} \\
+\hline
+{\em G\-P\-Transformer} & transforms cell points according to the topology (e.\-g. periodic) of the \hyperlink{classrepast_1_1_base_grid}{Base\-Grid}. \\
+\hline
+{\em Adder} & determines how objects are added to the grid from its associated context. \\
+\hline
+\end{DoxyTemplParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/nick/\-Documents/repos/repast.\-hpc/src/repast\-\_\-hpc/Shared\-Continuous\-Space.\-h\end{DoxyCompactItemize}

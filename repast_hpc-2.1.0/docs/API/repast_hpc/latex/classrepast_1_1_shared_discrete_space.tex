@@ -1,0 +1,78 @@
+\hypertarget{classrepast_1_1_shared_discrete_space}{\section{repast\-:\-:Shared\-Discrete\-Space$<$ T, G\-P\-Transformer, Adder $>$ Class Template Reference}
+\label{classrepast_1_1_shared_discrete_space}\index{repast\-::\-Shared\-Discrete\-Space$<$ T, G\-P\-Transformer, Adder $>$@{repast\-::\-Shared\-Discrete\-Space$<$ T, G\-P\-Transformer, Adder $>$}}
+}
+
+
+Discrete matrix-\/like \hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} implementation.  
+
+
+
+
+{\ttfamily \#include $<$Shared\-Discrete\-Space.\-h$>$}
+
+Inheritance diagram for repast\-:\-:Shared\-Discrete\-Space$<$ T, G\-P\-Transformer, Adder $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{classrepast_1_1_shared_discrete_space}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrepast_1_1_shared_discrete_space_adc291abec4694cde796a45e2d237c968}{{\bfseries Shared\-Discrete\-Space} (std\-::string \hyperlink{classrepast_1_1_projection_ab60a0ab4f584685780307d7431b61800}{name}, \hyperlink{classrepast_1_1_grid_dimensions}{Grid\-Dimensions} grid\-Dims, std\-::vector$<$ int $>$ process\-Dims, int buffer, boost\-::mpi\-::communicator $\ast$communicator)}\label{classrepast_1_1_shared_discrete_space_adc291abec4694cde796a45e2d237c968}
+
+\item 
+virtual void \hyperlink{classrepast_1_1_shared_discrete_space_a1f690e82e6b7ea6a279db020e12b4d21}{get\-Agents\-To\-Push} (std\-::set$<$ \hyperlink{classrepast_1_1_agent_id}{Agent\-Id} $>$ \&agents\-To\-Test, std\-::map$<$ int, std\-::set$<$ \hyperlink{classrepast_1_1_agent_id}{Agent\-Id} $>$ $>$ \&agents\-To\-Push)
+\begin{DoxyCompactList}\small\item\em Given a set of agents, gets the agents that this projection implementation must 'push' to other processes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrepast_1_1_shared_discrete_space_a76b6b3583d899b77eb1f78b46c268db2}{virtual void {\bfseries synch\-Move\-To} (const \hyperlink{classrepast_1_1_agent_id}{Agent\-Id} \&id, const \hyperlink{classrepast_1_1_point}{Point}$<$ int $>$ \&pt)}\label{classrepast_1_1_shared_discrete_space_a76b6b3583d899b77eb1f78b46c268db2}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename G\-P\-Transformer, typename Adder$>$class repast\-::\-Shared\-Discrete\-Space$<$ T, G\-P\-Transformer, Adder $>$}
+
+Discrete matrix-\/like \hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} implementation. 
+
+This primarily adds the buffer synchronization appropriate for this type. Default templated typical Shared\-Grid types are defined in Shared\-Grids.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classrepast_1_1_shared_base_grid}{Shared\-Base\-Grid} for more details.
+\end{DoxySeeAlso}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of objects contained by this \hyperlink{classrepast_1_1_base_grid}{Base\-Grid} \\
+\hline
+{\em G\-P\-Transformer} & transforms cell points according to the topology (e.\-g. periodic) of the \hyperlink{classrepast_1_1_base_grid}{Base\-Grid}. \\
+\hline
+{\em Adder} & determines how objects are added to the grid from its associated context. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrepast_1_1_shared_discrete_space_a1f690e82e6b7ea6a279db020e12b4d21}{\index{repast\-::\-Shared\-Discrete\-Space@{repast\-::\-Shared\-Discrete\-Space}!get\-Agents\-To\-Push@{get\-Agents\-To\-Push}}
+\index{get\-Agents\-To\-Push@{get\-Agents\-To\-Push}!repast::SharedDiscreteSpace@{repast\-::\-Shared\-Discrete\-Space}}
+\subsubsection[{get\-Agents\-To\-Push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename G\-P\-Transformer , typename Adder $>$ void {\bf repast\-::\-Shared\-Discrete\-Space}$<$ T, G\-P\-Transformer, Adder $>$\-::get\-Agents\-To\-Push (
+\begin{DoxyParamCaption}
+\item[{std\-::set$<$ {\bf Agent\-Id} $>$ \&}]{agents\-To\-Test, }
+\item[{std\-::map$<$ int, std\-::set$<$ {\bf Agent\-Id} $>$ $>$ \&}]{agents\-To\-Push}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrepast_1_1_shared_discrete_space_a1f690e82e6b7ea6a279db020e12b4d21}
+
+
+Given a set of agents, gets the agents that this projection implementation must 'push' to other processes. 
+
+Generally spaces must push agents that are in 'buffer zones' and graphs must push local agents that are vertices to master edges where the other vertex is non-\/ local. The results are returned per-\/process in the agents\-To\-Push map. 
+
+Reimplemented from \hyperlink{classrepast_1_1_shared_base_grid_ab1486e7698288efc1218653d4e5e1e15}{repast\-::\-Shared\-Base\-Grid$<$ T, G\-P\-Transformer, Adder, int $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/nick/\-Documents/repos/repast.\-hpc/src/repast\-\_\-hpc/Shared\-Discrete\-Space.\-h\end{DoxyCompactItemize}
