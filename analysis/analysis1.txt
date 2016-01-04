@@ -1,10 +1,10 @@
 First the project was run for 100 ticks 5000 humans 50 zombies per patch. In a 2x2 configuration.
-With scalasca, the execution time was:
+With scalasca, the execution time was: 0:09:29
 Scalasca output: image1.png
 Conclusions:
 
-Most of the time is spent in a sincronization step and in agent action processing.
-The sincronization part consists of MPI Messaging
+Most of the time is spent in a synchronisation step and in agent action processing.
+The synchronisation part consists of MPI Messaging
 The agent processing consists mainly of:
 
 relogo/WorldCreator.h - createWorld function 8/80s
@@ -19,4 +19,18 @@ relogo/agentSet.h - minOneOf function 600/1200s
 relogo/Observer.h - turtlesOn
 	The second version of this function has a cicle that may be good to parallelize.
 	
-  
+
+Run for 100 ticks 7500 humans 75 zombies per patch. In 2x2 configuration.
+With scalasca, the execution time was 0:13:10
+Problem size: 5000 -> 7500 : 50% increase
+synchronize: 767.35 -> 882.57 : 15% increase
+Observer::get: 84.89 -> 100.76: 18% increase
+AgentSet<Zombie>::ask: 47.86 -> 86.17 : 80% increase
+Observer:get<Human>: 95.52 -> 116.67 : 22% increase
+AgentSet<Human>::ask: 1238 -> 1872: 50% increase
+
+Conclusions: Agentset->ask functions increase the most with the increase in problem size
+
+Run for 100 ticks 5000 humans 50 zombies per patch. In 4x4 configuration.
+With scalasca, the execution time was  0:10:18
+
