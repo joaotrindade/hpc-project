@@ -34,3 +34,14 @@ Conclusions: Agentset->ask functions increase the most with the increase in prob
 Run for 100 ticks 5000 humans 50 zombies per patch. In 4x4 configuration.
 With scalasca, the execution time was  0:10:18
 
+
+Project was run for different size matrixes but maintaining the overall project size to see if there are any diferences in the output.
+Original overall problem size was 20.000 humans and 200 zombies.
+per process
+5000 humans - 50 zombies - 2 x 2
+2222 humans - 22 zombies - 3 x 3
+1250 humans - 13 zombies - 4 x 4
+800  humans -  8 zombies - 5 x 5
+
+There are diferences in the outputs, after 100 ticks the 5 x 5 has more 409 infected than the 2 x 2. That’s close to 10% relative to the size of the output.
+
