@@ -3,13 +3,13 @@
 # VARIABLES (Supply values for these; for definitions and examples, see INSTALL)
 CXX=mpicxx
 CXXLD=mpicxx
-BOOST_INCLUDE_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/Boost/Boost_1.58/include
-BOOST_LIB_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/Boost/Boost_1.58/lib
+BOOST_INCLUDE_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/Boost/Boost_1.58/include
+BOOST_LIB_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/Boost/Boost_1.58/lib
 BOOST_INFIX=-mt
-NETCDF_INCLUDE_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/NetCDF/include
-NETCDF_LIB_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/NetCDF/lib
-CURL_INCLUDE_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/CURL/include
-CURL_LIB_DIR=/home/hpc/t1221/t1221ag/Projecto/repast_hpc-2.1.0/ext/CURL/lib
+NETCDF_INCLUDE_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/NetCDF/include
+NETCDF_LIB_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/NetCDF/lib
+CURL_INCLUDE_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/CURL/include
+CURL_LIB_DIR=/home/hpc/t1221/t1221ag/hpc-project/default/ext/CURL/lib
 
 # DIRECTORIES 
 SRC_DIR=../src

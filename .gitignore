@@ -7,3 +7,15 @@ openmp/INSTALLATION/netcdf-cxx-4.2.tar.gz
 default/INSTALLATION/mpich-3.1.4.tar.gz
 default/INSTALLATION/netcdf-4.2.1.1.tar.gz
 default/INSTALLATION/netcdf-cxx-4.2.tar.gz
+defaut/ext/Boost/
+default/ext/CURL/
+default/ext/MPICH/
+default/ext/NETCDF/
+default/ext/include/
+default/ext/lib/
+openmp/ext/Boost/
+openmp/ext/CURL/
+openmp/ext/MPICH/
+openmp/ext/NETCDF/
+openmp/ext/include/
+openmp/ext/lib/
