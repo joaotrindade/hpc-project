@@ -143,7 +143,7 @@ $(ZOMBIE_EXE): $(REPAST_HPC_LIB) $(RELOGO_LIB) $(ZOMBIE_OBJECTS)
 	mkdir -p ../ext/bin
 	cp $(ZOMBIE_DIR)/config.props ../ext/bin/zombie_config.props
 	cp $(ZOMBIE_DIR)/model.props ../ext/bin/zombie_model.props
-	scalasca -instrument mpiicc -L../ext/lib/ $(L_BOOST) $(L_NETCDF) $(L_CURL) $(ZOMBIE_OBJECTS) -o $(ZOMBIE_EXE) $(l_CURL) $(l_RELOGO) $(l_REPAST_HPC) $(l_NETCDF) $(l_BOOST) 
+	mpicxx -L../ext/lib/ $(L_BOOST) $(L_NETCDF) $(L_CURL) $(ZOMBIE_OBJECTS) -o $(ZOMBIE_EXE) $(l_CURL) $(l_RELOGO) $(l_REPAST_HPC) $(l_NETCDF) $(l_BOOST) 
 
 # User-friendly names
 .PHONY : repast_hpc
@@ -192,7 +192,7 @@ distclean: clean
 
 # Object files are built from cpp files
 %.o:
-	scalasca -instrument mpiicc -fPIC -std=c++11 -c $(I_BOOST) $(I_NETCDF) $(I_CURL) -I$(SRC_DIR) -g0 -O3 -o $@ $*.cpp
+	mpicxx -fPIC -std=c++11 -c $(I_BOOST) $(I_NETCDF) $(I_CURL) -I$(SRC_DIR) -g0 -O3 -o $@ $*.cpp
 	
 # Cancel implicit rule for name with no suffix, to avoid confusing output:
 %: %.o

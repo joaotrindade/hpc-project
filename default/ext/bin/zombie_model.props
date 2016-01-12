@@ -13,8 +13,8 @@ max.y = 99
 grid.buffer = 2
 
 # these must multiply to total number of processes
-proc.per.x = 5
-proc.per.y = 5
+proc.per.x = 2
+proc.per.y = 2
 
 # named random number distributions
 distribution.zombie_move = int_uniform, 0, 2
