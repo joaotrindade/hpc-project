@@ -4,3 +4,6 @@ repast_hpc-2.1.0/INSTALLATION/netcdf-cxx-4.2.tar.gz
 openmp/INSTALLATION/mpich-3.1.4.tar.gz
 openmp/INSTALLATION/netcdf-4.2.1.1.tar.gz
 openmp/INSTALLATION/netcdf-cxx-4.2.tar.gz
+default/INSTALLATION/mpich-3.1.4.tar.gz
+default/INSTALLATION/netcdf-4.2.1.1.tar.gz
+default/INSTALLATION/netcdf-cxx-4.2.tar.gz
