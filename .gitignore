@@ -19,3 +19,10 @@ openmp/ext/MPICH/
 openmp/ext/NETCDF/
 openmp/ext/include/
 openmp/ext/lib/
+default/INSTALLATION/boost_1_58_0/
+default/INSTALLATION/curl-7.42.1/
+default/INSTALLATION/mpich-3.1.4/
+default/INSTALLATION/netcdf-4.2.1.1/
+default/INSTALLATION/netcdf-cxx-4.2/
+default/ext/Boost/
+default/ext/NetCDF/
