@@ -32,3 +32,6 @@ default/ext/bin/rumor_model.props
 *.o
 *.tar.gz
 *.DS_Store
+default/ext/bin/output/
+default/ext/bin/core
+default/ext/bin/logs/
