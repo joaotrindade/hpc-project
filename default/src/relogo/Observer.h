@@ -810,6 +810,7 @@ void Observer::turtlesOn(AgentSet<RelogoAgent>& agentSet, AgentSet<TurtleType>& 
   int typeId = getTypeId<TurtleType> ();
 	if (typeId != NO_TYPE_ID) {
 		std::vector<RelogoAgent*> in;
+		#pragma omp parallel for num_threads(2)
 		for (AgentSet<RelogoAgent>::const_as_iterator iter = agentSet.begin(); iter != agentSet.end(); ++iter) {
 			RelogoAgent* agent = *iter;
 			grid()->getObjectsAt(Point<int> (agent->pxCor(), agent->pyCor()), in);
@@ -826,7 +827,6 @@ void Observer::inRadius(const Point<double>& center, AgentSet<RelogoAgent>& inSe
 		double radiusSq = radius * radius;
 		std::vector<RelogoAgent*> vec;
 		const RelogoSpaceType* spc = space();
-		#pragma omp parallel for num_threads(2)
 		for (size_t i = 0; i < inSet.size(); i++) {
 			RelogoAgent* agent = inSet[i];
 			if (spc->getDistanceSq(center, agent->location()) <= radiusSq && agent->getId().agentType() == typeId) {
