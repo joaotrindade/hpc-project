@@ -29,6 +29,7 @@ default/ext/NetCDF/
 default/ext/bin/rumor_config.props
 default/ext/bin/rumor_model
 default/ext/bin/rumor_model.props
+default/ext/bin/core
 *.o
 *.tar.gz
 *.DS_Store
