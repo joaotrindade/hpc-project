@@ -18,6 +18,10 @@ source /etc/profile.d/modules.sh
 
 cd /home/hpc/t1221/t1221ag/hpc-project/default/ext/bin
 export OMP_NUM_THREADS=2
+mpirun -n 4 ./zombie_model zombie_config.props configs/160k/model-2-2.props
+mpirun -n 9 ./zombie_model zombie_config.props configs/160k/model-3-3.props
+mpirun -n 16 --perhost 14 ./zombie_model zombie_config.props configs/160k/model-4-4.props
+mpirun -n 25 --perhost 14 ./zombie_model zombie_config.props configs/160k/model-5-5.props
 mpiexec -n 32 --perhost 14 ./zombie_model zombie_config.props configs/160k/model-4-8.props
 # will start 16 MPI tasks with 7 threads each. Note that
 # each node has 28 cores, so 4 tasks must be started 
