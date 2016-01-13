@@ -58,6 +58,7 @@
 #include "creators.h"
 #include "relogo.h"
 #include "agent_set_functions.h"
+#include <omp.h>
 
 /**
  * \mainpage Repast HPC- ReLogo Logo-Like Semantics for Repast HPC
@@ -825,6 +826,7 @@ void Observer::inRadius(const Point<double>& center, AgentSet<RelogoAgent>& inSe
 		double radiusSq = radius * radius;
 		std::vector<RelogoAgent*> vec;
 		const RelogoSpaceType* spc = space();
+		#pragma omp parallel for num_threads(2)
 		for (size_t i = 0; i < inSet.size(); i++) {
 			RelogoAgent* agent = inSet[i];
 			if (spc->getDistanceSq(center, agent->location()) <= radiusSq && agent->getId().agentType() == typeId) {
