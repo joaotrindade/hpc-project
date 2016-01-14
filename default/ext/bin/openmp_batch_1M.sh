@@ -25,6 +25,7 @@ mpirun -n 16 --perhost 14 ./zombie_model zombie_config.props configs/1M/model-4-
 mpirun -n 25 --perhost 14 ./zombie_model zombie_config.props configs/1M/model-5-5.props
 mpirun -n 32 --perhost 14 ./zombie_model zombie_config.props configs/1M/model-4-8.props
 
+
 # will start 16 MPI tasks with 7 threads each. Note that
 # each node has 28 cores, so 4 tasks must be started 
 # per host.
