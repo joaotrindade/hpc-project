@@ -2,8 +2,8 @@
 stop.at = 100
 
 # per process
-human.count = 111111; 
-zombie.count = 1111;
+human.count = 222222; 
+zombie.count = 2222;
 
 # world definition props
 min.x = -100
