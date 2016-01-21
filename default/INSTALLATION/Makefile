@@ -113,7 +113,7 @@ l_RELOGO=-l$(RELOGO_NAME)
 
 # Default rule makes everything
 .PHONY : all
-all: copy_includes repast_hpc relogo rumor_model zombie_model
+all: copy_includes repast_hpc relogo zombie_model
 
 .PHONY : copy_includes
 copy_includes:
