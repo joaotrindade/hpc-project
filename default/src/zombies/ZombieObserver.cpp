@@ -68,7 +68,7 @@ void ZombieObserver::go() {
   }
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
 
-  #pragma omp parallel num_tasks(2)
+  #pragma omp parallel num_threads(2)
   {
   	#pragma omp single nowait
 	{

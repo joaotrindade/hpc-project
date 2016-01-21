@@ -717,7 +717,7 @@ template<typename AgentType>
 void Observer::get(AgentSet<AgentType>& agentSet) {
   int typeId = getTypeId<AgentType> ();
 	if (typeId != NO_TYPE_ID) {
-		#pragma omp parallel for num_threads(2)
+		
 		for (SharedContext<RelogoAgent>::const_local_iterator iter = context.localBegin(); iter != context.localEnd(); ++iter) {
 			AgentId id = iter->get()->getId();
 			if (id.agentType() == typeId) {
