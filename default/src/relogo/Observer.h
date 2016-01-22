@@ -811,7 +811,7 @@ void Observer::turtlesOn(AgentSet<RelogoAgent>& agentSet, AgentSet<TurtleType>& 
   int typeId = getTypeId<TurtleType> ();
 	if (typeId != NO_TYPE_ID) {
 		std::vector<RelogoAgent*> in;
-		#pragma omp parallel for num_threads(2)
+		#pragma omp parallel for num_threads(4)
 		for (AgentSet<RelogoAgent>::const_as_iterator iter = agentSet.begin(); iter != agentSet.end(); ++iter) {
 			RelogoAgent* agent = *iter;
 			grid()->getObjectsAt(Point<int> (agent->pxCor(), agent->pyCor()), in);
