@@ -5,7 +5,7 @@
 #SBATCH --get-user-env 
 #SBATCH --clusters=mpp2 
 #SBATCH --ntasks=40
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=4
 # the above is a good match for the
 # CooLMUC2 architecture.
 # For mpp1, thread counts of 2, 4 or 8
@@ -17,13 +17,13 @@
 source /etc/profile.d/modules.sh
 
 cd /home/hpc/t1221/t1221ag/hpc-project/default/ext/bin
-export OMP_NUM_THREADS=2
+export OMP_NUM_THREADS=4
 
-mpirun -n 4 --perhost 14 ./zombie_model zombie_config.props configs/2M/model-2-2.props
-mpirun -n 9 --perhost 14 ./zombie_model zombie_config.props configs/2M/model-3-3.props
-mpirun -n 16 --perhost 14 ./zombie_model zombie_config.props configs/2M/model-4-4.props
-mpirun -n 25 --perhost 14 ./zombie_model zombie_config.props configs/2M/model-5-5.props
-mpirun -n 32 --perhost 14 ./zombie_model zombie_config.props configs/2M/model-4-8.props
+mpirun -n 4 --perhost 7 ./zombie_model zombie_config.props configs/2M/model-2-2.props
+mpirun -n 9 --perhost 7 ./zombie_model zombie_config.props configs/2M/model-3-3.props
+mpirun -n 16 --perhost 7 ./zombie_model zombie_config.props configs/2M/model-4-4.props
+mpirun -n 25 --perhost 7 ./zombie_model zombie_config.props configs/2M/model-5-5.props
+mpirun -n 32 --perhost 7 ./zombie_model zombie_config.props configs/2M/model-4-8.props
 
 
 # will start 16 MPI tasks with 7 threads each. Note that
