@@ -431,6 +431,7 @@ void AgentSet<T>::apply(const Functor& func) {
 template<typename T>
 template<typename Functor>
 void AgentSet<T>::ask(Functor func) {
+	// Test paralellization here
 	for (as_iterator iter = agents.begin(); iter != agents.end(); ++iter) {
 		T* target = *iter;
 		(target->*func)();
@@ -490,6 +491,7 @@ T* AgentSet<T>::maxOneOf(const ValueGetter& getter) {
 
 	std::vector<T*> maxs;
 	double max = -(std::numeric_limits<double>::max());
+	#pragma omp parallel for num_threads(2)
 	for (as_iterator iter = agents.begin(); iter != agents.end(); ++iter) {
 		T* agent = *iter;
 		double val = getter(agent);
