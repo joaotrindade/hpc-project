@@ -73,32 +73,42 @@ void ZombieObserver::go() {
   int work_per_rank = zombieCount + humanCount;
   
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
-  AgentSet<Zombie> zombies;
-  AgentSet<Human> humans;
+  
   
   if (work_per_rank > OMP_TASK_THRESHOLD) {
   	#pragma omp parallel num_threads(2)
  	{
   		#pragma omp single nowait
 		{
+			AgentSet<Zombie> zombies;
+		    AgentSet<Human> humans;	
+			
   			#pragma omp task
   			get(zombies);
   	
   			#pragma omp task
   			get(humans);
   		
-  			#pragma omp taskwait  	
+  			#pragma omp taskwait
+  			
+  			zombies.ask(&Zombie::step);
+  			AgentId id(0,0,2);
+  			Zombie* z = who<Zombie>(id);
+  			humans.ask(&Human::step);  	
   		}
   	}
   } else {
+  	AgentSet<Zombie> zombies;
+	AgentSet<Human> humans;
   	get(zombies);
   	get(humans);
+  	zombies.ask(&Zombie::step);
+  	AgentId id(0,0,2);
+  	Zombie* z = who<Zombie>(id);
+  	humans.ask(&Human::step);
   }
   
-  zombies.ask(&Zombie::step);
-  AgentId id(0,0,2);
-  Zombie* z = who<Zombie>(id);
-  humans.ask(&Human::step);
+  
 
   
 
