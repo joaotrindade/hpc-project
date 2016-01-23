@@ -76,19 +76,23 @@ void ZombieObserver::go() {
   AgentSet<Zombie> zombies;
   AgentSet<Human> humans;
   
-  #pragma omp parallel num_threads(2)
-  {
-  	#pragma omp single nowait
-	{
-  		#pragma omp task if(work_per_rank > OMP_TASK_THRESHOLD)
-  		get(zombies);
+  if (work_per_rank > OMP_TASK_THRESHOLD) {
+  	#pragma omp parallel num_threads(2)
+ 	{
+  		#pragma omp single nowait
+		{
+  			#pragma omp task
+  			get(zombies);
   	
-  		#pragma omp task if(work_per_rank > OMP_TASK_THRESHOLD)
-  		get(humans);
+  			#pragma omp task
+  			get(humans);
   		
-  	
-  		#pragma omp taskwait  	
+  			#pragma omp taskwait  	
+  		}
   	}
+  } else {
+  	get(zombies);
+  	get(humans);
   }
   
   zombies.ask(&Zombie::step);
