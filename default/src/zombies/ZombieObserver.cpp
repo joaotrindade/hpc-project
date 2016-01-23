@@ -61,10 +61,7 @@ using namespace relogo;
 
 const string HUMAN_COUNT_PROP = "human.count";
 const string ZOMBIE_COUNT_PROP = "zombie.count";
-const string X_PROCS_PROP = "proc.per.x";
-const string Y_PROCS_PROP = "proc.per.y";
 int humanCount, zombieCount;
-int x_procs, y_procs;
 
 #define OMP_TASK_THRESHOLD 60000
 
@@ -73,14 +70,7 @@ void ZombieObserver::go() {
     Log4CL::instance()->get_logger("root").log(INFO, "TICK BEGINS: " + boost::lexical_cast<string>(RepastProcess::instance()->getScheduleRunner().currentTick()));
   }
   
-  cout << "zombieCount: " << zombieCount << endl;
-  cout << "humanCount: " << humanCount << endl;  
-  cout << "x_procs: " << x_procs << endl;
-  cout << "y_procs: " << y_procs << endl;
-  
   int work_per_rank = zombieCount + humanCount;
-  
-  cout << "work_per_rank: " << work_per_rank << endl;
   
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
   #pragma omp parallel num_threads(2)
@@ -119,9 +109,6 @@ void ZombieObserver::setup(Properties& props) {
   //	Observer::setup(props); // No longer need to call this (SimRunner calls _setup, which calls this after all initialization is done)
   repast::Timer initTimer;
   initTimer.start();
-
-  x_procs = strToInt(props.getProperty(X_PROCS_PROP));
-  y_procs = strToInt(props.getProperty(Y_PROCS_PROP));
 
   humanCount = strToInt(props.getProperty(HUMAN_COUNT_PROP));
   humanType = create<Human> (humanCount);
