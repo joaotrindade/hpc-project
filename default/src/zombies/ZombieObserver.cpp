@@ -66,7 +66,7 @@ const string Y_PROCS_PROP = "proc.per.y";
 int humanCount, zombieCount;
 int x_procs, y_procs;
 
-#define OMP_TASK_THREASHOLD 1000000
+#define OMP_TASK_THRESHOLD 1000000
 
 void ZombieObserver::go() {
   if (_rank == 0) {
@@ -78,6 +78,13 @@ void ZombieObserver::go() {
   cout << "x_procs: " << x_procs << endl;
   cout << "y_procs: " << y_procs << endl;
   
+  int work_per_rank = 0;
+  
+  if (x_procs > 0 && y_procs > 0)
+   	work_per_rank = (int)((zombieCount + humanCount) / ( x_procs * y_procs ));
+  
+  cout << "work_per_rank: " << work_per_rank << endl;
+  
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
   #pragma omp parallel num_threads(2)
   {
@@ -86,12 +93,12 @@ void ZombieObserver::go() {
   		AgentSet<Zombie> zombies;
   		AgentSet<Human> humans;
   	
-  		#pragma omp task
+  		#pragma omp task if(work_per_rank > OMP_TASK_THRESHOLD)
 		{
   			get(zombies);
   		}
   	
-  		#pragma omp task
+  		#pragma omp task if(work_per_rank > OMP_TASK_THRESHOLD)
   		{
   			get(humans);
   		}
