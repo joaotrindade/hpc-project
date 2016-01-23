@@ -61,13 +61,24 @@ using namespace relogo;
 
 const string HUMAN_COUNT_PROP = "human.count";
 const string ZOMBIE_COUNT_PROP = "zombie.count";
+const string X_PROCS_PROP = "proc.per.x";
+const string Y_PROCS_PROP = "proc.per.y";
+int humanCount, zombieCount;
+int x_procs, y_procs;
+
+#define OMP_TASK_THREASHOLD 1000000
 
 void ZombieObserver::go() {
   if (_rank == 0) {
     Log4CL::instance()->get_logger("root").log(INFO, "TICK BEGINS: " + boost::lexical_cast<string>(RepastProcess::instance()->getScheduleRunner().currentTick()));
   }
+  
+  cout << "zombieCount: " << zombieCount << endl;
+  cout << "humanCount: " << humanCount << endl;  
+  cout << "x_procs: " << x_procs << endl;
+  cout << "y_procs: " << y_procs << endl;
+  
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
-	cout << "         MAX THREADS:" << omp_get_max_threads() << endl;
   #pragma omp parallel num_threads(2)
   {
   	#pragma omp single nowait
@@ -105,10 +116,13 @@ void ZombieObserver::setup(Properties& props) {
   repast::Timer initTimer;
   initTimer.start();
 
-  int humanCount = strToInt(props.getProperty(HUMAN_COUNT_PROP));
+  x_procs = strToInt(props.getProperty(X_PROCS_PROP));
+  y_procs = strToInt(props.getProperty(Y_PROCS_PROP));
+
+  humanCount = strToInt(props.getProperty(HUMAN_COUNT_PROP));
   humanType = create<Human> (humanCount);
 
-  int zombieCount = strToInt(props.getProperty(ZOMBIE_COUNT_PROP));
+  zombieCount = strToInt(props.getProperty(ZOMBIE_COUNT_PROP));
   zombieType = create<Zombie> (zombieCount);
 
   AgentSet<Human> humans;
