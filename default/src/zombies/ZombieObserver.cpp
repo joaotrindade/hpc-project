@@ -66,7 +66,7 @@ const string Y_PROCS_PROP = "proc.per.y";
 int humanCount, zombieCount;
 int x_procs, y_procs;
 
-#define OMP_TASK_THRESHOLD 1000000
+#define OMP_TASK_THRESHOLD 60000
 
 void ZombieObserver::go() {
   if (_rank == 0) {
@@ -78,10 +78,7 @@ void ZombieObserver::go() {
   cout << "x_procs: " << x_procs << endl;
   cout << "y_procs: " << y_procs << endl;
   
-  int work_per_rank = 0;
-  
-  if (x_procs > 0 && y_procs > 0)
-   	work_per_rank = (int)((zombieCount + humanCount) / ( x_procs * y_procs ));
+  int work_per_rank = zombieCount + humanCount;
   
   cout << "work_per_rank: " << work_per_rank << endl;
   
