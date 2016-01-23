@@ -67,7 +67,7 @@ void ZombieObserver::go() {
     Log4CL::instance()->get_logger("root").log(INFO, "TICK BEGINS: " + boost::lexical_cast<string>(RepastProcess::instance()->getScheduleRunner().currentTick()));
   }
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
-
+	cout << "         MAX THREADS:" << omp_get_max_threads() << endl;
   #pragma omp parallel num_threads(2)
   {
   	#pragma omp single nowait
