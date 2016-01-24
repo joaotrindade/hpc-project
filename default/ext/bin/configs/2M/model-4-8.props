@@ -1,5 +1,5 @@
 #random.seed = 1284067381
-stop.at = 45
+stop.at = 100
 
 # per process
 human.count = 62500; 
