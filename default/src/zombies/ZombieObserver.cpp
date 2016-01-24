@@ -61,16 +61,13 @@ using namespace relogo;
 
 const string HUMAN_COUNT_PROP = "human.count";
 const string ZOMBIE_COUNT_PROP = "zombie.count";
-int humanCount, zombieCount;
-
+int work_per_rank;
 #define OMP_TASK_THRESHOLD 60000
 
 void ZombieObserver::go() {
   if (_rank == 0) {
     Log4CL::instance()->get_logger("root").log(INFO, "TICK BEGINS: " + boost::lexical_cast<string>(RepastProcess::instance()->getScheduleRunner().currentTick()));
   }
-  
-  int work_per_rank = zombieCount + humanCount;
   
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
   
@@ -122,11 +119,13 @@ void ZombieObserver::setup(Properties& props) {
   repast::Timer initTimer;
   initTimer.start();
 
-  humanCount = strToInt(props.getProperty(HUMAN_COUNT_PROP));
+  int humanCount = strToInt(props.getProperty(HUMAN_COUNT_PROP));
   humanType = create<Human> (humanCount);
 
-  zombieCount = strToInt(props.getProperty(ZOMBIE_COUNT_PROP));
+  int zombieCount = strToInt(props.getProperty(ZOMBIE_COUNT_PROP));
   zombieType = create<Zombie> (zombieCount);
+	
+  work_per_rank = humanCount + zombieCount;
 
   AgentSet<Human> humans;
   get(humans);
