@@ -432,7 +432,7 @@ template<typename T>
 template<typename Functor>
 void AgentSet<T>::ask(Functor func) {
 	// Test paralellization here
-	#pragma omp parallel for num_threads(2)
+	//#pragma omp parallel for num_threads(2)
 	for (as_iterator iter = agents.begin(); iter != agents.end(); ++iter) {
 		T* target = *iter;
 		(target->*func)();
