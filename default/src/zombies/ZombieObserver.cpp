@@ -62,7 +62,7 @@ using namespace relogo;
 const string HUMAN_COUNT_PROP = "human.count";
 const string ZOMBIE_COUNT_PROP = "zombie.count";
 int work_per_rank;
-#define OMP_TASK_THRESHOLD 60000
+#define OMP_TASK_THRESHOLD 70000
 
 void ZombieObserver::go() {
   if (_rank == 0) {
@@ -71,7 +71,7 @@ void ZombieObserver::go() {
   
   synchronize<AgentPackage>(*this, *this, *this, RepastProcess::USE_LAST_OR_USE_CURRENT);
   AgentSet<Zombie> zombies;
-AgentSet<Human> humans; 
+  AgentSet<Human> humans; 
   
   if (work_per_rank > OMP_TASK_THRESHOLD) {
   	#pragma omp parallel num_threads(2)
@@ -80,24 +80,18 @@ AgentSet<Human> humans;
 		{
   			#pragma omp task
   			{
-  			//	AgentSet<Zombie> zombies;
   				get(zombies);
-  			//	zombies.ask(&Zombie::step);
-  			//	AgentId id(0,0,2);
-  			//	Zombie* z = who<Zombie>(id);
   			}
   			
   			#pragma omp task
   			{
-  			//	AgentSet<Human> humans;	
   				get(humans);
-  			//	humans.ask(&Human::step); 
   			}
 
   			#pragma omp taskwait
 			zombies.ask(&Zombie::step);
-                        AgentId id(0,0,2);
-                        Zombie* z = who<Zombie>(id);
+            AgentId id(0,0,2);
+            Zombie* z = who<Zombie>(id);
 			humans.ask(&Human::step); 
   		}
   	}
