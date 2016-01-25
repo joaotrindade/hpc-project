@@ -1,0 +1,7 @@
+To execute the code.
+1- gcc 4.8: module load gcc/4.8
+2- load scalasca: module load scalasca
+3- Follow the repast guidelines to install the dependencies and compile the source files.
+4- Use the Makefile for the execution binary. And the makefile-scalasca for the profiling binary
+5- Inside the ext/bin/configs are some files for different problem sizes. to run them there are shell scripts inside the ext/bin folder.
+For example the data_collection_160k.sh runs the simulation for a problem size of 160k zombies in different MPI configrations (2x2, 3x3, 4x4, 5x5, 4x8 for example) alternatively, run them individually with mpirun.
